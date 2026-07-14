@@ -18,7 +18,7 @@ setup(
         'pytablericons.hooks': ['*.py']
     },
     install_requires=[
-        'pygame>=2.5.2',
+        'pygame-ce>=2.5.2',
         'Pillow>=9.5.0'
     ],
     python_requires='>=3.7',

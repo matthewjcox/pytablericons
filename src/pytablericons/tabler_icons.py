@@ -38,11 +38,12 @@ class TablerIcons:
         ElementTree.register_namespace('', 'http://www.w3.org/2000/svg')
         root = ElementTree.fromstring(svg_string)
 
-        # Set attributes (width, height, transform, stroke / fill, and stroke-width)
-        svg_default_size = int(root.get('width'))
+        # Set attributes (width, height, stroke / fill, and stroke-width)
+        # Note: no separate transform="scale(...)" is needed here — setting
+        # width/height already scales the icon from its default size, and
+        # additionally transforming it double-scales (and clips) the result.
         root.set('width', str(size))
         root.set('height', str(size))
-        root.set('transform', 'scale(' + str(size / svg_default_size) + ')')
         root.set(color_attribute, color)
         if root.get('stroke-width') is not None:
             root.set('stroke-width', str(stroke_width))
